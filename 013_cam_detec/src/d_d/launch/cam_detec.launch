@@ -1,0 +1,10 @@
+<launch>
+  <node pkg="d_d" type="dynamic_reconfigure_node" name="d_d" clear_params="true" output="screen">
+
+    <!-- for data -->
+    <param name="json_add" value="/home/cbreezy/002_everything_here/013_cam_detec/src/d_d/config/RGBdata.json" />
+    <param name="json_file_add" value="/home/cbreezy/002_everything_here/013_cam_detec/src/d_d/config_save/" />
+
+    <remap from="~image" to="/usb_cam/image_raw" />
+  </node>
+</launch>
