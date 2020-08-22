@@ -2,8 +2,8 @@
  基于opencv的颜色物体实时识别
 
 ### 依赖项
-opencv
-jsoncpp（0.y.z分支）
+- opencv
+- jsoncpp（0.y.z分支）
 
 ### 编译
 - `cd 013_cam_detec`
