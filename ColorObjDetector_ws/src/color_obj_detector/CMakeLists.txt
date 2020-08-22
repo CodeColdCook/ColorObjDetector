@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(d_d)
+project(color_obj_detector)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -33,16 +33,16 @@ include_directories(
 )
 
 # for dynamic reconfigure  
-add_executable(dynamic_reconfigure_node
-	src/server.cpp
+add_executable(color_obj_detector_node
+	src/color_obj_detector_node.cpp
 	src/detector.cpp
 	) 
 
 # make sure configure headers are built before any node using them
-add_dependencies(dynamic_reconfigure_node ${PROJECT_NAME}_gencfg)
+add_dependencies(color_obj_detector_node ${PROJECT_NAME}_gencfg)
 
 # for dynamic reconfigure  
-target_link_libraries(dynamic_reconfigure_node ${catkin_LIBRARIES} ${OpenCV_LIBS} "libjsoncpp.a" )  
+target_link_libraries(color_obj_detector_node ${catkin_LIBRARIES} ${OpenCV_LIBS} "libjsoncpp.a" )  
 
 catkin_package(
 )

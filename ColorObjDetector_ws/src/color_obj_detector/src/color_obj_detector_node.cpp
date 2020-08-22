@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <dynamic_reconfigure/server.h>
-#include <d_d/ChangeConfig.h>
+#include <color_obj_detector/ChangeConfig.h>
 
 #include <vector>
 #include <string>
@@ -33,7 +33,7 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg)
     pdet->detect(img);
 }
 
-void callback(d_d::ChangeConfig &config, uint32_t level) {
+void callback(color_obj_detector::ChangeConfig &config, uint32_t level) {
     ROS_INFO("Reconfigure Request: %d %d %d %d %d %d Config saved: %s", 
               config.R1, config.G1,config.B1,
              config.R2, config.G2, config.B2,
@@ -111,8 +111,8 @@ int main(int argc, char **argv)
     image_transport::ImageTransport it(nh);
     image_transport::Subscriber sub = it.subscribe("image", 1, imageCallback);
 
-    dynamic_reconfigure::Server<d_d::ChangeConfig> server;
-    dynamic_reconfigure::Server<d_d::ChangeConfig>::CallbackType f;
+    dynamic_reconfigure::Server<color_obj_detector::ChangeConfig> server;
+    dynamic_reconfigure::Server<color_obj_detector::ChangeConfig>::CallbackType f;
 
     f = boost::bind(&callback, _1, _2);
     server.setCallback(f);

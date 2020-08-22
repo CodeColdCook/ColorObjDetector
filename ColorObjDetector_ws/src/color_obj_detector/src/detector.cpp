@@ -30,18 +30,19 @@ void Detector::detect(Mat &frame)
 	}
 	inRange(frame, Scalar(RGB_begin[0],RGB_begin[1],RGB_begin[2]), Scalar(RGB_end[0],RGB_end[1],RGB_end[2]), dst);
 	morphologyEx(dst,dst,MORPH_OPEN,kernel);
+	morphologyEx(dst,dst,MORPH_OPEN,kernel);
 	findContours(dst, contours, hireachy, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, Point(0,0));
 	if (contours.size() > 0)
 	{
 		double maxArea=0;
 		for (int i = 0; i < contours.size(); i++)
 		{
-			double area = contourArea(contours[static_cast<int>(i)]);
+			double area = contourArea(contours[i]);
 			if (area > maxArea)
 			{
 				maxArea = area;
-				rect = boundingRect(contours[static_cast<int>(i)]);
-				minEnclosingCircle(contours[static_cast<int>(i)], center, radius);
+				rect = boundingRect(contours[i]);
+				minEnclosingCircle(contours[i], center, radius);
 			}
 		}
 	}
@@ -51,6 +52,6 @@ void Detector::detect(Mat &frame)
 	imshow("input", frame);
 	imshow("output", dst);
 
-	waitKey(150);
+	//waitKey(150);
 
 }

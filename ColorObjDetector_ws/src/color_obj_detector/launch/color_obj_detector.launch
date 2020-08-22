@@ -1,0 +1,10 @@
+<launch>
+  <node pkg="color_obj_detector" type="color_obj_detector_node" name="color_obj_detector" clear_params="true" output="screen">
+
+    <!-- for data -->
+    <param name="json_add" value="/home/cbreezy/002_everything_here/013_cam_detec/ColorObjDetector_ws/src/color_obj_detector/config/RGBdata.json" />
+    <param name="json_file_add" value="/home/cbreezy/002_everything_here/013_cam_detec/ColorObjDetector_ws/src/color_obj_detector/config_save/" />
+
+    <remap from="~image" to="/usb_cam/image_raw" />
+  </node>
+</launch>
